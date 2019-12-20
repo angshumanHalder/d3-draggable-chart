@@ -36,6 +36,7 @@ const MainContainer = () => {
                 <xAxis orient="bottom" className="axis" tickFormat="%d/%m" ticks={4}/>
                 <yAxis orient="left" className="axis" ticks={5}/>
                 <dragLine className="drag-line" />
+                <dragLine className="drag-line" />
                 <area className="area" fill="url(#area)" alt=""/>
                 <path className="line shadow" strokeLinecap="round"/>
                 <dots r="5" format="%b %e" removeFirstAndLast={false}/>

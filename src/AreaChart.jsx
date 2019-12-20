@@ -173,9 +173,20 @@ class AreaChart extends Component {
         this.setState({tooltip:{ display:false,data:{key:'',value:''}}});
   }
 
+  createDragLine = (element) => {
+    let object;
+    switch(element.type) {
+      case 'DragLine':
+        object = <DragLine />
+        break;
+      default:
+        object = undefined;
+    }
+    return object;
+  }
+
   render() {
     this.createChart(this);
-
         var elements;
         var defs;
         var _self=this;
@@ -215,13 +226,9 @@ class AreaChart extends Component {
         return (
             <div>
                 <svg id={this.props.id} width={this.state.width} height={this.props.height}>
-                    <foreignObject>
-                      <svg width={this.state.width} height={this.props.height}></svg>
-                    </foreignObject>
                     {defs}
                     <g transform={this.transform}>
                         {elements}
-
                     </g>
 
                 </svg>

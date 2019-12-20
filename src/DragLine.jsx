@@ -1,21 +1,24 @@
 import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
 import * as d3 from 'd3';
 
 class DragLine extends Component {
   componentDidMount() {
-  d3.drag().on('start', function(){ return d3.select(this).raise() })
-    .on('drag', function(){
+    let _self = this;
+    let node = ReactDOM.findDOMNode(this);
+    d3.select(node).call(d3.drag().on('start', function() { return d3.select(_self).raise() })
+    .on('drag', function() {
       let dx = d3.event.sourceEvent.clientX
-      let _x = dx - this.props.margin.left
+      let _x = dx - _self.props.margin.left
       let _base = 0
-      let _width = this.props.width
+      let _width = _self.props.width
       let _offset = _x < _base ? _base : _x > _width ? _width : _x
-      d3.select('foreignObject').attr('width', _offset)
-      d3.select(this)
+      d3.select(node).attr('width', _offset)
+      d3.select(node)
         .attr('transform', () => {
           return `translate(${_offset})`
         })
-    })
+    }))
   }
 
 
@@ -32,4 +35,4 @@ class DragLine extends Component {
   }
 }
 
-export default DragLine
+export default DragLine;

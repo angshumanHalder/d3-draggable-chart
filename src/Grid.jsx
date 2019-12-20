@@ -40,7 +40,7 @@ class Grid extends Component {
         .tickFormat('');
     }
     
-    var node = ReactDOM.findDOMNode(this);
+    let node = ReactDOM.findDOMNode(this);
     console.log('sdfnadsf', node, d3.select(node), this.grid)
     d3.select(node).call(this.grid);
   }
